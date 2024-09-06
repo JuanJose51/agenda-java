@@ -16,11 +16,20 @@ public class Agenda {
 		this.reuniones = new ArrayList<>();
 	}
 	
+	/*************************************************
+	 *            METODOS DE CONTACTO
+	 * 
+	 *************************************************/
 	
-	public void agregarContacto(Contacto contacto) {
-		if(isContactoExistente(contacto) == false) {
-			this.contactos.add(contacto);			
+	
+	public boolean agregarContacto(Contacto contacto) {
+		boolean estado = isContactoExistente(contacto);
+		if(estado == false) {
+			this.contactos.add(contacto);
 		}
+
+		return !estado;
+		
 	}
 	
 	public void imprimirContactos() {
@@ -40,6 +49,24 @@ public class Agenda {
 		}
 		
 		return false;
+	}
+	
+	public Contacto buscarContacto( String nombre, String telefono) {
+		for (Contacto c : this.contactos) {			
+			if(c.getNombre().equalsIgnoreCase(nombre) && c.getTelefono().equals(telefono)) {
+				return c;
+			}
+		}
+		
+		return null;
+	}
+	
+	public void ActualizarContacto(String nombre,String alias,String direccion,String telefono,String email, Contacto c) {
+		c.setNombre(nombre);
+		c.setAlias(alias);
+		c.setDireccion(direccion);
+		c.setTelefono(telefono);
+		c.setEmail(email);
 	}
 	
 
