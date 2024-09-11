@@ -69,5 +69,17 @@ public class Agenda {
 		c.setEmail(email);
 	}
 	
+	
+	public boolean eliminarContacto(String nombre, String telefono) {
+		Contacto c = buscarContacto(nombre, telefono);
+		if(c == null) {
+			return false;
+		}
+		
+		contactos.remove(c);
+		
+		return true;
+	}
+	
 
 }

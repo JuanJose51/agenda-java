@@ -9,98 +9,56 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int opcionMenu = 4;
+		int opcionMenu;
 		String menuPrincipal = "Menú principal\n"+
 		"Ingrese la opción correspondiente:\n"+
-		"1. Contactos.\n" +
-		"2. Grupos.\n" +
-		"3. Reuniones.\n"+
-		"4. Salir";
+		"1. Listar contactos.\n" +
+		"2. Agregar contacto.\n" +
+		"3. Actualizar contacto.\n" +
+		"4. Eliminar Contacto.\n"+
+		"5. Listar grupos.\n" +
+		"6. Agregar grupo.\n" +
+		"7. Actualizar grupo.\n" +
+		"8. Eliminar grupo.\n"+
+		"9. Salir";
 		
-		int opcionSubMenu = 0;	
+		int opcionSeleccionada = 0;	
 		
 		
 		do {
-			opcionMenu = Integer.parseInt(JOptionPane.showInputDialog(null,menuPrincipal));
-			String subMe = getSubMenu(opcionMenu);
-			opcionSubMenu = Integer.parseInt(JOptionPane.showInputDialog(subMe));
-			opcionSubmenu(opcionMenu);
-		} while (opcionMenu != 4);
+			opcionSeleccionada = Integer.parseInt(JOptionPane.showInputDialog(null,menuPrincipal));
+			opcionMenu(opcionSeleccionada);
+		} while (opcionSeleccionada != 9);
 
 	}
 	
-	private static void opcionSubmenu(int opt) {
-		switch (opt) {
-		case 1: {
-			OptContactos(opt);
-			break;
-		}
-		case 2: {
-			break;
-		}
-		default:
-			break;
-		}
-	}
-	
-	private static String getSubMenu(int opt) {
-		String subMenu = "";
-	
+	private static void opcionMenu(int opt) {
 		switch (opt) {
 		case 1: 
-			subMenu = "Ingrese un opción:\n" +
-					"1. Lista de contactos\n" +
-					"2. Agregar un contacto.\n" +
-					"3. Actualizar contacto.\n"
-					+ 
-					"4. Regresar.";
-			break;
-		case 2: 
-			subMenu = "Ingrese un opción:\n" +
-					"1. Lista de grupos\n" +
-					"2. Agregar un grupo.\n" +
-					"3. Actualizar grupo.\n"
-					+ 
-					"4. Regresar.";
-			
-			break;
-		case 3: 
-			
-			break;
-		
-		}
-		
-		return subMenu; 
-	}
-	
-	public static void OptContactos(int opt) {
-		switch (opt) {
-		case 1:
 			getListaContactos();
-			break;
-		case 2:
+			break;		
+		case 2: 
 			crearContacto();
-			break;
-		case 3:
+			break;				
+		case 3: 
 			String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
 			String telefono= JOptionPane.showInputDialog("Ingrese el telefono");
 			actualizarContacto(nombre, telefono);
 			break;
-		case 4:
+		case 4: 
 			break;
-			
 		default:
 			break;
 		}
-	}
+	}	
 	
 	
-	public static void getListaContactos() {
+	private static void getListaContactos() {
 		System.out.println("Lista de contactos:");
 		a.imprimirContactos();
 	}
 	
-	public static void crearContacto() {
+	private static void crearContacto() {
 		String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
 		String alias = JOptionPane.showInputDialog("Ingrese el alias");
 		String direccion= JOptionPane.showInputDialog("Ingrese el direccion");
@@ -118,7 +76,7 @@ public class Main {
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
 	
-	public static void actualizarContacto(String nombre,String telefono) {
+	private static void actualizarContacto(String nombre,String telefono) {
 		Contacto contacto = a.buscarContacto(nombre, telefono);
 		
 		System.out.println("Contacto a actualizar:");
@@ -136,5 +94,17 @@ public class Main {
 			JOptionPane.showMessageDialog(null, "El contacto no existe");
 		}
 		
+	}
+	
+	
+	private static void eliminarContacto() {
+		String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
+		String telefono= JOptionPane.showInputDialog("Ingrese el telefono");
+		
+		boolean estado = a.eliminarContacto(nombre, telefono);
+		
+		String mensaje = estado == true ? "Contacto eliminado." : "El contacto no existe.";
+		
+		System.out.println(mensaje);
 	}
 }
