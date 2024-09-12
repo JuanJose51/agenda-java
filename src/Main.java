@@ -10,8 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int opcionMenu;
-		String menuPrincipal = "Men� principal\n"+
-		"Ingrese la opci�n correspondiente:\n"+
+		String menuPrincipal = "Menu principal\n"+
+		"Ingrese la opcion correspondiente:\n"+
 		"1. Listar contactos.\n" +
 		"2. Agregar contacto.\n" +
 		"3. Actualizar contacto.\n" +
@@ -20,7 +20,11 @@ public class Main {
 		"6. Agregar grupo.\n" +
 		"7. Actualizar grupo.\n" +
 		"8. Eliminar grupo.\n"+
-		"9. Salir";
+		"9. Lista reuniones\n"+
+		"10 agregar reunion\n"+
+		"11 actualizar reunion\n"+
+		"12 eliminar reunion\n"+
+		"13. Salir";
 		
 		int opcionSeleccionada = 0;	
 		
@@ -28,7 +32,7 @@ public class Main {
 		do {
 			opcionSeleccionada = Integer.parseInt(JOptionPane.showInputDialog(null,menuPrincipal));
 			opcionMenu(opcionSeleccionada);
-		} while (opcionSeleccionada != 9);
+		} while (opcionSeleccionada != 13);
 
 	}
 	
@@ -106,5 +110,18 @@ public class Main {
 		String mensaje = estado == true ? "Contacto eliminado." : "El contacto no existe.";
 		
 		System.out.println(mensaje);
+	}
+/*
+ * CREO EL METODO CREAR REUNION	
+ */
+	private static void crearReunion() {
+		String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion");
+		int año = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año de la reunión"));
+	    int mes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el mes"));
+	    int dia = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el día"));
+		int tiempo = a.verificarHora();
+		int minutos =c.verificarMinuto();
+		String fecha = String.format(año+""+mes+""+""+dia);
+		String hora = String.format(tiempo+":"+minutos);
 	}
 }

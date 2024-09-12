@@ -5,12 +5,12 @@ import java.util.Date;
 
 public class Reunion {
 	private String descripcion;
-	private Date fecha;
+	private String fecha;
 	private String hora;
 	private ArrayList<Contacto> asistentes;
 	
 	
-	public Reunion(String descripcion, Date fecha, String hora) {
+	public Reunion(String descripcion, String fecha, String hora) {
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.hora = hora;
@@ -28,12 +28,12 @@ public class Reunion {
 	}
 
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

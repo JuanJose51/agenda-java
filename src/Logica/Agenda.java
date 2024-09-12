@@ -2,6 +2,8 @@ package Logica;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Agenda {
 	private String nombre;
 	private ArrayList<Contacto> contactos;
@@ -79,7 +81,32 @@ public class Agenda {
 		contactos.remove(c);
 		
 		return true;
+	} 
+	/********************************
+	 *      METODO DE REUNION       *
+	 *                              *
+	 ********************************/
+	public int verificarHora() {
+		int hora = -1;
+		while (hora > 0 || hora <23) {
+			try {
+				hora=Integer.parseInt(JOptionPane.showInputDialog("ingrese la hora de la reunion(0-23)"));
+			}catch(NumberFormatException e) {
+				 JOptionPane.showMessageDialog(null,"Por favor, ingrese un número válido.");
+				 hora = -1;
+			}
+			if(hora < 0 || hora >23) {
+				 JOptionPane.showMessageDialog(null,"el número no esta en el rango válido.");
+			}
+				
+		}
+		return hora;
+			
 	}
+	public int verificarMinuto() {
+		
+	}
+			
+} 
 	
 
-}
